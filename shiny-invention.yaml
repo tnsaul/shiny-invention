@@ -1,0 +1,52 @@
+esphome:
+  name: shiny-invention
+  platform: ESP8266
+  board: d1_mini
+
+
+
+wifi:
+  # manual_ip:
+    # # Set this to the IP of the ESP
+    # static_ip: 10.10.10.9
+    # # Set this to the IP address of the router. Often ends with .1
+    # gateway: 10.10.10.1
+    # # The subnet of the network. 255.255.255.0 works for most home networks.
+    # subnet: 255.255.255.0
+
+  ssid: !secret esp_wifi_ssid
+  password: !secret esp_wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: !secret esp_backup_ssid
+    password: !secret esp_backup_password
+
+captive_portal:
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: !secret esp_api_password
+
+ota:
+  password: !secret esp_ota_password
+
+
+
+# Example configuration entry
+uart:
+  rx_pin: GPIO4
+  baud_rate: 9600
+
+sensor:
+  - platform: pmsx003
+    type: PMSX003
+    pm_1_0:
+      name: "Particulate Matter <1.0µm Concentration"
+    pm_2_5:
+      name: "Particulate Matter <2.5µm Concentration"
+    pm_10_0:
+      name: "Particulate Matter <10.0µm Concentration"
