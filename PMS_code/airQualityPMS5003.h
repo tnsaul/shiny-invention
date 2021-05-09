@@ -84,7 +84,7 @@ PMS::DATA g_data;
 class PMS5003CustomSensor : public Component, public Sensor, public UARTDevice
 {
     public:
-        Sensor *pms5003_PM1_sensor = new Sensor();
+        Sensor *pms5003_PM1_0_sensor = new Sensor();
         Sensor *pms5003_PM2_5_sensor = new Sensor();
         Sensor *pms5003_PM10_sensor = new Sensor();
         Sensor *pms5003_PB0_3_sensor = new Sensor();
@@ -92,7 +92,7 @@ class PMS5003CustomSensor : public Component, public Sensor, public UARTDevice
         Sensor *pms5003_PB1_0_sensor = new Sensor();
         Sensor *pms5003_PB2_5_sensor = new Sensor();
         Sensor *pms5003_PB5_0_sensor = new Sensor();
-        Sensor *pms5003_PB10_sensor = new Sensor();
+        Sensor *pms5003_PB10_0_sensor = new Sensor();
         Sensor *pms5003_UKAQI_sensor = new Sensor();
 
         // Constructor.
@@ -257,7 +257,7 @@ class PMS5003CustomSensor : public Component, public Sensor, public UARTDevice
             if (true == g_pms_ae_readings_taken)
             {
                 /* Report PM1.0 AE value */
-                pms5003_PM1_sensor->publish_state(g_pm1p0_ae_value);
+                pms5003_PM1_0_sensor->publish_state(g_pm1p0_ae_value);
                 /* Report PM2.5 AE value */
                 pms5003_PM2_5_sensor->publish_state(g_pm2p5_ae_value);
                 /* Report PM10.0 AE value */
@@ -266,18 +266,18 @@ class PMS5003CustomSensor : public Component, public Sensor, public UARTDevice
 
             if (true == g_pms_ppd_readings_taken)
             {
-                /* Report PM0.3 PPD value */
+                /* Report PB0.3 PPD value */
                 pms5003_PB0_3_sensor->publish_state(g_pm0p3_ppd_value);
-                /* Report PM0.5 PPD value */
+                /* Report PB0.5 PPD value */
                 pms5003_PB0_5_sensor->publish_state(g_pm0p5_ppd_value);
-                /* Report PM1.0 PPD value */
+                /* Report PB1.0 PPD value */
                 pms5003_PB1_0_sensor->publish_state(g_pm1p0_ppd_value);
-                /* Report PM2.5 PPD value */
+                /* Report PB2.5 PPD value */
                 pms5003_PB2_5_sensor->publish_state(g_pm2p5_ppd_value);
-                /* Report PM5.0 PPD value */
+                /* Report PB5.0 PPD value */
                 pms5003_PB5_0_sensor->publish_state(g_pm5p0_ppd_value);
-                /* Report PM10.0 PPD value */
-                pms5003_PB10_sensor->publish_state(g_pm10p0_ppd_value);
+                /* Report PB10.0 PPD value */
+                pms5003_PB10_0_sensor->publish_state(g_pm10p0_ppd_value);
                 /* Report UK AQI value */
                 pms5003_UKAQI_sensor->publish_state(g_uk_aqi_value);
             }
