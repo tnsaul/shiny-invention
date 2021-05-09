@@ -36,7 +36,13 @@ api:
 ota:
   password: !secret esp_ota_password
 
-
+# SDA = D2 = GPIO4
+# SCL = D1 = GPIO5
+i2c:
+  sda: 4
+  scl: 5
+  scan: True
+  id: bus_a
 
 uart:
   id: uart_bus
@@ -92,5 +98,20 @@ sensor:
     - name: "PMS5003 Dust Sensor UK AQI"
       unit_of_measurement: "rating"
       accuracy_decimals: 0
-     
 
+
+  - platform: sgp30
+    eco2:
+      name: "eCO2"
+      accuracy_decimals: 1
+    tvoc:
+      name: "TVOC"
+      accuracy_decimals: 1
+    address: 0x58
+    update_interval: 300s
+
+  - platform: bh1750
+    name: "BH1750 Illuminance"
+    address: 0x23
+    measurement_time: 69
+    update_interval: 300s
